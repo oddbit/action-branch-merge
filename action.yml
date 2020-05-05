@@ -1,6 +1,6 @@
 name: 'Branch Merge'
-description: 'Automatically merge the stable branch into the development one.'
-author: 'Daniele E. Domenichelli'
+description: 'Automatically merge branches'
+author: 'Dennis Alund'
 branding:
   icon: 'git-merge'
   color: 'green'
