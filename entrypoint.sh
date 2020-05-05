@@ -50,8 +50,10 @@ git config --global user.email "$INPUT_USER_EMAIL"
 set -o xtrace
 
 git checkout -B $INPUT_TARGET_BRANCH
+git branch --set-upstream-to=origin/$INPUT_TARGET_BRANCH $INPUT_TARGET_BRANCH 
 git pull
 git checkout -B $INPUT_SOURCE_BRANCH
+git branch --set-upstream-to=origin/$INPUT_SOURCE_BRANCH $INPUT_SOURCE_BRANCH
 git pull
 
 if git merge-base --is-ancestor $INPUT_SOURCE_BRANCH $INPUT_TARGET_BRANCH; then
