@@ -1,18 +1,18 @@
-name: 'Nightly Merge'
+name: 'Branch Merge'
 description: 'Automatically merge the stable branch into the development one.'
 author: 'Daniele E. Domenichelli'
 branding:
   icon: 'git-merge'
-  color: 'orange'
+  color: 'green'
 inputs:
-  stable_branch:
-    description: 'Name of the stable branch'
+  target_branch:
+    description: 'Name of the target branch'
     required: false
     default: 'master'
-  development_branch:
-    description: 'Name of the development branch'
+  source_branch:
+    description: 'Name of the source branch'
     required: false
-    default: 'devel'
+    default: 'develop'
   allow_ff:
     description: 'Allow fast forward merge'
     required: false
@@ -32,7 +32,7 @@ inputs:
   user_name:
     description: 'User name for git commits'
     required: false
-    default: 'GitHub Nightly Merge Action'
+    default: 'GitHub Action'
   user_email:
     description: 'User email for git commits'
     required: false
