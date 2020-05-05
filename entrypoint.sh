@@ -51,9 +51,7 @@ set -o xtrace
 
 git fetch
 git checkout -B $INPUT_SOURCE_BRANCH
-git pull origin $INPUT_SOURCE_BRANCH
 git checkout -B $INPUT_TARGET_BRANCH
-git pull origin $INPUT_TARGET_BRANCH
 
 if git merge-base --is-ancestor $INPUT_SOURCE_BRANCH $INPUT_TARGET_BRANCH; then
   echo "No merge is necessary"
