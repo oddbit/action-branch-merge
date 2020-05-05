@@ -1,6 +1,6 @@
 name: 'Branch Merge'
 description: 'Automatically merge branches'
-author: 'Dennis Alund'
+author: 'Team Oddbit'
 branding:
   icon: 'git-merge'
   color: 'green'

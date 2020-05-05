@@ -1,6 +1,9 @@
-# Nightly Merge Action
+# Branch Merge Action
 
-Automatically merge the stable branch into the development one.
+Automatically merge one branch into another.
+
+This can be useful to automatically merge `develop` into `staging` when a sprint
+is finished (milestone closed).
 
 If the merge is not necessary, the action will do nothing.
 If the merge fails due to conflicts, the action will fail, and the repository
@@ -8,16 +11,11 @@ maintainer should perform the merge manually.
 
 ## Installation
 
-To enable the action simply create the `.github/workflows/nightly-merge.yml`
-file with the following content:
-
 ```yml
-name: 'Nightly Merge'
-
+name: End of sprint
 on:
-  schedule:
-    - cron:  '0 0 * * *'
-
+  milestone:
+    types: [closed]
 jobs:
   nightly-merge:
 
@@ -25,40 +23,27 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
-    - name: Nightly Merge
-      uses: robotology/gh-action-nightly-merge@v1.2.0
+    - name: Merge branch
+      uses: oddbit/action-branch-merge@master
       with:
-        stable_branch: 'master'
-        development_branch: 'devel'
-        allow_ff: false
+        target_branch: 'staging'
+        source_branch: 'develop'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-Even though this action was created to run as a scheduled workflow,
-[`on`](https://help.github.com/en/articles/workflow-syntax-for-github-actions#on)
-can be replaced by any other trigger.
-For example, this will run the action whenever something is pushed on the
-`master` branch:
-
-```yml
-on:
-  push:
-    branches:
-      - master
-```
 
 ## Parameters
 
-### `stable_branch`
+### `target_branch`
 
 The name of the stable branch (default `master`).
 
-### `development_branch`
+### `source_branch`
 
-The name of the development branch (default `devel`).
+The name of the development branch (default `develop`).
 
 ### `allow_ff`
 
@@ -81,7 +66,7 @@ Allow action to run on forks (default `false`).
 
 ### `user_name`
 
-User name for git commits (default `GitHub Nightly Merge Action`).
+User name for git commits (default `GitHub Branch Merge Action`).
 
 ### `user_email`
 
