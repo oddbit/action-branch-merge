@@ -1,11 +1,11 @@
 FROM alpine:latest
 
-LABEL repository="http://github.com/robotology/gh-action-nightly-merge"
-LABEL homepage="http://github.com/robotology/gh-action-nightly-merge"
-LABEL "com.github.actions.name"="Nightly Merge"
-LABEL "com.github.actions.description"="Automatically merge the stable branch into the development one."
+LABEL repository="https://github.com/oddbit/action-branch-merge"
+LABEL homepage="https://github.com/oddbit/action-branch-merge"
+LABEL "com.github.actions.name"="Branch Merge"
+LABEL "com.github.actions.description"="Automatically merge branches"
 LABEL "com.github.actions.icon"="git-merge"
-LABEL "com.github.actions.color"="orange"
+LABEL "com.github.actions.color"="green"
 
 RUN apk --no-cache add bash curl git jq
 
